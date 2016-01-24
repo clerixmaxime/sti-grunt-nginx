@@ -1,0 +1,7 @@
+{
+  "kind": "ImageStream",
+  "apiVersion": "v1",
+  "metadata": {
+    "name": "grunt-nginx-10-centos7"
+  }
+}

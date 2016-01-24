@@ -1,0 +1,10 @@
+#!/bin/bash
+
+LOCAL_SOURCE_DIR=${HOME}
+
+mv $LOCAL_SOURCE_DIR/copy-nginx-conf.sh /tmp/copy-nginx-conf.sh
+source /tmp/copy-nginx-conf.sh
+
+export OPENSHIFT_KUBE_PING_NAMESPACE=$OPENSHIFT_BUILD_NAMESPACE
+
+exec /usr/sbin/nginx -g daemon off;

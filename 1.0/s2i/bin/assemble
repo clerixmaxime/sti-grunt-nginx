@@ -1,0 +1,37 @@
+#!/bin/bash
+
+# Source code provided to S2I is at ${HOME}
+LOCAL_SOURCE_DIR=${HOME}
+mkdir -p $LOCAL_SOURCE_DIR
+
+# Copy the source for compilation
+cp -Rf /opt/s2i/destination/src/. $LOCAL_SOURCE_DIR
+chgrp -R 0 $LOCAL_SOURCE_DIR
+chmod -R g+rw $LOCAL_SOURCE_DIR
+
+# If a Gruntfile.js is present, this is a normal build scenario
+# so run maven.
+if [ -f "$LOCAL_SOURCE_DIR/Gruntfile.js" ]; then
+  pushd $LOCAL_SOURCE_DIR &> /dev/null
+
+  echo "Found Gruntfile.js... attempting to build with 'grunt build'"
+
+  npm cache clean
+  npm install
+  bower --allow-root install -g
+  grunt build
+
+  ERR=$?
+  if [ $ERR -ne 0 ]; then
+    echo "Aborting due to error code $ERR from grunt build"
+    exit $ERR
+  fi
+
+  popd &> /dev/null
+
+else
+  echo "Oops - only grunt builds are supported."
+  exit 1
+fi
+
+echo "...done"
