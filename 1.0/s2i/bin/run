@@ -7,4 +7,4 @@ source /tmp/copy-nginx-conf.sh
 
 export OPENSHIFT_KUBE_PING_NAMESPACE=$OPENSHIFT_BUILD_NAMESPACE
 
-exec /usr/sbin/nginx -g daemon off;
+exec /usr/sbin/nginx -g "daemon off;"
