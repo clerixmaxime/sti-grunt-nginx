@@ -18,7 +18,9 @@ RUN curl -sO http://nginx.org/keys/nginx_signing.key && \
     yum install -y --setopt=tsflags=nodocs $INSTALL_PKGS && \
     rpm -V $INSTALL_PKGS && \
     yum clean all -y && \
-    rm -f ./nginx_signing.key
+    rm -f ./nginx_signing.key && \
+    chmod -R 777 /var/log/nginx /var/cache/nginx/ && \
+    chmod 644 /etc/nginx/*
 
 # forward request and error logs to docker log collector
 RUN ln -sf /dev/stdout /var/log/nginx/access.log
