@@ -20,11 +20,15 @@ RUN curl -sO http://nginx.org/keys/nginx_signing.key && \
     yum clean all -y && \
     rm -f ./nginx_signing.key && \
     chmod -R 777 /var/log/nginx /var/cache/nginx/ && \
-    chmod 644 /etc/nginx/*
+    chmod 644 /etc/nginx/* && \
+    # Acquire ownership of /var/log/nginx to bypass https://github.com/docker/docker/issues/6880
+    chown -R 1001:0 /var/log/nginx
 
 # forward request and error logs to docker log collector
-RUN ln -sf /dev/stdout /var/log/nginx/access.log
-RUN ln -sf /dev/stderr /var/log/nginx/error.log
+# Using /proc/self/fd/1 and /proc/self/fd/2 instead of /dev/stdout and /dev/stderr
+# to bypass https://github.com/docker/docker/issues/6880
+RUN ln -sf /proc/self/fd/1 /var/log/nginx/access.log && \
+    ln -sf /proc/self/fd/2 /var/log/nginx/error.log
 
 # Copy the S2I scripts from the specific language image to /usr/local/sti
 COPY ./s2i/bin/ $STI_SCRIPTS_PATH
