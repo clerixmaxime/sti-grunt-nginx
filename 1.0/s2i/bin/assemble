@@ -27,6 +27,9 @@ if [ -f "$LOCAL_SOURCE_DIR/Gruntfile.js" ]; then
     exit $ERR
   fi
 
+  echo "Copying build artifacts to nginx documents directory..."
+  cp -a dist/. /usr/share/nginx/html/
+
   popd &> /dev/null
 
 else

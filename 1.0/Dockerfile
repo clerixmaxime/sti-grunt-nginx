@@ -30,7 +30,9 @@ RUN ln -sf /proc/self/fd/1 /var/log/nginx/access.log && \
     # Acquire ownership of /var/log/nginx to bypass https://github.com/docker/docker/issues/6880
     chown -R 1001:0 /var/log/nginx && \
     # Make /var/run world-writeable to allow nginx to create /var/run/nginx.pid
-    chmod -R 777 /var/run
+    chmod -R 777 /var/run && \
+    # Take ownership of the nginx documents directory
+    chown -R 1001:0 /usr/share/nginx/html
 
 # Copy the S2I scripts from the specific language image to /usr/local/sti
 COPY ./s2i/bin/ $STI_SCRIPTS_PATH
