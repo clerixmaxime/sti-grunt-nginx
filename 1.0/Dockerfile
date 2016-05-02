@@ -49,7 +49,7 @@ RUN $PROMPT_COMMAND && \
 RUN chmod -R go+rw /opt/s2i/destination
 
 # Open port
-EXPOSE 80 443
+EXPOSE 8080 8443
 
 USER 1001
 
