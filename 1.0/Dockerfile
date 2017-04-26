@@ -26,13 +26,15 @@ RUN curl -sO http://nginx.org/keys/nginx_signing.key && \
 RUN ln -sf /proc/self/fd/1 /var/log/nginx/access.log && \
     ln -sf /proc/self/fd/2 /var/log/nginx/error.log && \
     chmod -R 777 /var/log/nginx /var/cache/nginx/ && \
-    chmod 777 /etc/nginx/* && \
+    chmod -R 777 /etc/nginx/* && \
     # Acquire ownership of /var/log/nginx to bypass https://github.com/docker/docker/issues/6880
     chown -R 1001:0 /var/log/nginx && \
     # Make /var/run world-writeable to allow nginx to create /var/run/nginx.pid
     chmod -R 777 /var/run && \
     # Take ownership of the nginx documents directory
-    chown -R 1001:0 /usr/share/nginx/html
+    chown -R 1001:0 /usr/share/nginx/html \
+    mkdir -p /var/www/frontend \
+    chmod -R 777 /var/www/frontend
 
 # Copy the S2I scripts from the specific language image to /usr/local/sti
 COPY ./s2i/bin/ $STI_SCRIPTS_PATH
