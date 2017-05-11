@@ -17,7 +17,6 @@ if [ -f "$LOCAL_SOURCE_DIR/Gruntfile.js" ]; then
   echo "Found Gruntfile.js... attempting to build with 'grunt build'"
 
   npm cache clean
-  npm install -g bower grunt-cli
   npm install
   bower --allow-root install -g
   # grunt build -d
