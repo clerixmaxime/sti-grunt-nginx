@@ -4,4 +4,4 @@ LOCAL_SOURCE_DIR=${HOME}
 
 export OPENSHIFT_KUBE_PING_NAMESPACE=$OPENSHIFT_BUILD_NAMESPACE
 
-grunt serve
+nginx -g 'daemon off;'
