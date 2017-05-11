@@ -14,8 +14,8 @@ ADD nginx.repo /etc/yum.repos.d/nginx.repo
 RUN curl -sO http://nginx.org/keys/nginx_signing.key && \
     rpm --import ./nginx_signing.key && \
     yum install -y nginx-${NGINX_VERSION} centos-release-scl && \
-    curl https://rpm.nodesource.com/setup_6.x > node.sh \
-    bash node.sh \
+    wget https://rpm.nodesource.com/setup_6.x \
+    bash setup_6.X \
     yum install -y nodejs \
     INSTALL_PKGS="ruby200 ruby200-ruby-devel ruby200-rubygems libpng-devel" && \
     yum install -y --setopt=tsflags=nodocs $INSTALL_PKGS && \
