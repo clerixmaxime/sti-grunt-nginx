@@ -19,7 +19,7 @@ RUN curl -sO http://nginx.org/keys/nginx_signing.key && \
     yum install -y --setopt=tsflags=nodocs $INSTALL_PKGS && \
     rpm -V $INSTALL_PKGS && \
     yum clean all -y && \
-    rm -f ./nginx_signing.key    
+    rm -f ./nginx_signing.key
 
 # forward request and error logs to docker log collector
 # Using /proc/self/fd/1 and /proc/self/fd/2 instead of /dev/stdout and /dev/stderr
@@ -48,8 +48,8 @@ RUN $PROMPT_COMMAND && \
     npm install npm -g && \
     npm install -g bower && \
     npm install -g grunt-cli && \
-    gem install sass && \
-    gem install compass && \
+    # gem install sass && \
+    # gem install compass && \
     npm cache clean
 
 # Create nginx group and user, set file ownership to that user.
