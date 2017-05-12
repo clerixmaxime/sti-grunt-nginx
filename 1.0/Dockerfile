@@ -43,13 +43,10 @@ COPY ./s2i/bin/ $STI_SCRIPTS_PATH
 COPY ./contrib/ /opt/app-root
 
 # Installation
-RUN $PROMPT_COMMAND && \
-    mkdir -p /opt/s2i/destination && \
+RUN mkdir -p /opt/s2i/destination && \
     npm install npm -g && \
     npm install -g bower && \
     npm install -g grunt-cli && \
-    # gem install sass && \
-    # gem install compass && \
     npm cache clean
 
 # Create nginx group and user, set file ownership to that user.
