@@ -4,10 +4,12 @@
 LOCAL_SOURCE_DIR=${HOME}
 mkdir -p $LOCAL_SOURCE_DIR
 
+id
+
 # Copy the source for compilation
 cp -Rf /opt/s2i/destination/src/. $LOCAL_SOURCE_DIR
 chgrp -R 0 $LOCAL_SOURCE_DIR
-chmod -R 777 $LOCAL_SOURCE_DIR /opt/app-root/
+chmod -R 777 $LOCAL_SOURCE_DIR
 
 # If a Gruntfile.js is present, this is a normal build scenario
 # so run maven.
