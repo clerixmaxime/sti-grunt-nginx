@@ -28,7 +28,7 @@ if [ -f "$LOCAL_SOURCE_DIR/Gruntfile.js" ]; then
   fi
 
   echo "Copying build artifacts to nginx documents directory..."
-  cp -a dist/. /var/www/frontend
+  cp -a dist/. /usr/share/nginx/html/
   cp nginx/nginx.conf /etc/nginx/nginx.conf
 
   popd &> /dev/null
