@@ -20,7 +20,7 @@ if [ -f "$LOCAL_SOURCE_DIR/Gruntfile.js" ]; then
 
   npm cache clean
   npm install
-  bower install
+  bower --allow-root install
   grunt build --force -d
 
   ERR=$?
