@@ -50,7 +50,7 @@ RUN mkdir -p /opt/s2i/destination && \
     npm cache clean
 
 # Create nginx group and user, set file ownership to that user.
-RUN chmod -R go+rw /opt/s2i/destination
+RUN chmod -R 777 /opt/s2i/destination
 
 # Open port
 EXPOSE 8080 8443
