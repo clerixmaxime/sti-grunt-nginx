@@ -55,6 +55,6 @@ RUN chmod -R 777 /opt/s2i/destination
 # Open port
 EXPOSE 8080 8443
 
-USER 1001
+#USER 1001
 
 CMD $STI_SCRIPTS_PATH/usage
