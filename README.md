@@ -25,3 +25,9 @@ $ oc new-build https://github.com/clerixmaxime/sti-grunt-nginx.git --context-dir
 
 Wait for that buld to complete. Monitor it
 with `oc status`.
+
+Changes
+----------------
+
+* Update to Node.js 6.x
+* Run as root to avoid change ownership and permissions failures
