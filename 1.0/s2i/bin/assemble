@@ -10,7 +10,7 @@ mv /opt/node_modules $LOCAL_SOURCE_DIR
 chgrp -R 0 $LOCAL_SOURCE_DIR
 chmod -R 777 $LOCAL_SOURCE_DIR
 
-ls -l $LOCAL_SOURCE_DIR
+ls -la $LOCAL_SOURCE_DIR
 
 # If a Gruntfile.js is present, this is a normal build scenario
 # so run maven.
@@ -20,8 +20,7 @@ if [ -f "$LOCAL_SOURCE_DIR/Gruntfile.js" ]; then
   echo "Found Gruntfile.js... attempting to build with 'grunt build'"
 
   #npm cache clean --force
-  #npm prune
-  #npm install
+  npm install
   bower --allow-root install
   grunt build --force -d
 
