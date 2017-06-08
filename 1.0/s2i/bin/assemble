@@ -4,8 +4,6 @@
 LOCAL_SOURCE_DIR=${HOME}
 mkdir -p $LOCAL_SOURCE_DIR
 
-id
-
 # Copy the source for compilation
 cp -Rf /opt/s2i/destination/src/. $LOCAL_SOURCE_DIR
 chgrp -R 0 $LOCAL_SOURCE_DIR
@@ -18,7 +16,7 @@ if [ -f "$LOCAL_SOURCE_DIR/Gruntfile.js" ]; then
 
   echo "Found Gruntfile.js... attempting to build with 'grunt build'"
 
-  npm cache clean
+  npm cache clean --force
   npm install
   bower --allow-root install
   grunt build --force -d
