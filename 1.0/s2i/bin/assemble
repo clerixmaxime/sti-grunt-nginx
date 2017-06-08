@@ -4,12 +4,13 @@
 LOCAL_SOURCE_DIR=${HOME}
 mkdir -p $LOCAL_SOURCE_DIR
 
-echo "Source dir: " $LOCAL_SOURCE_DIR
 # Copy the source for compilation
-cp -Rf /opt/s2i/destination/src/. $LOCAL_SOURCE_DIR
-cp -Rf /opt/node_modules $LOCAL_SOURCE_DIR
+mv /opt/s2i/destination/src $LOCAL_SOURCE_DIR
+mv /opt/node_modules $LOCAL_SOURCE_DIR
 chgrp -R 0 $LOCAL_SOURCE_DIR
 chmod -R 777 $LOCAL_SOURCE_DIR
+
+ls -l $LOCAL_SOURCE_DIR
 
 # If a Gruntfile.js is present, this is a normal build scenario
 # so run maven.
@@ -32,7 +33,7 @@ if [ -f "$LOCAL_SOURCE_DIR/Gruntfile.js" ]; then
   echo "Copying build artifacts to nginx documents directory..."
   mv dist/* /usr/share/nginx/html/
   cp nginx/nginx.conf /etc/nginx/nginx.conf
-  rm -rf /opt/app-root/src/* /opt/s2i/*
+  rm -rf /opt/app-root/src /opt/s2i /opt/node_modules
 
   popd &> /dev/null
 
