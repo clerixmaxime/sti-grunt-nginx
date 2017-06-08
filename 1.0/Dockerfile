@@ -39,6 +39,7 @@ RUN ln -sf /proc/self/fd/1 /var/log/nginx/access.log && \
 COPY ./s2i/bin/ $STI_SCRIPTS_PATH
 
 COPY ./contrib/ /opt/app-root
+COPY ./node_modules /opt/node_modules
 
 # Installation
 RUN mkdir -p /opt/s2i/destination && \
