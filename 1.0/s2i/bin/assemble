@@ -5,7 +5,7 @@ LOCAL_SOURCE_DIR=${HOME}
 mkdir -p $LOCAL_SOURCE_DIR
 
 # Copy the source for compilation
-mv /opt/s2i/destination/src $LOCAL_SOURCE_DIR
+mv /opt/s2i/destination/src/* $LOCAL_SOURCE_DIR
 mv /opt/node_modules $LOCAL_SOURCE_DIR
 chgrp -R 0 $LOCAL_SOURCE_DIR
 chmod -R 777 $LOCAL_SOURCE_DIR
