@@ -45,7 +45,7 @@ RUN mkdir -p /opt/s2i/destination && \
     npm install npm -g && \
     npm install -g bower && \
     npm install -g grunt-cli && \
-    npm cache clean
+    npm cache clean --force
 
 # Create nginx group and user, set file ownership to that user.
 RUN chmod -R 777 /opt/s2i/destination
