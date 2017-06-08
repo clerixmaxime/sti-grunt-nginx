@@ -35,11 +35,11 @@ RUN ln -sf /proc/self/fd/1 /var/log/nginx/access.log && \
     # Take ownership of the nginx documents directory
     chown -R 1001:0 /usr/share/nginx/html
 
-# Copy the S2I scripts from the specific language image to /usr/local/sti
-COPY ./s2i/bin/ $STI_SCRIPTS_PATH
-
 COPY ./contrib/ /opt/app-root
 COPY ./node_modules /opt/node_modules
+
+# Copy the S2I scripts from the specific language image to /usr/local/sti
+COPY ./s2i/bin/ $STI_SCRIPTS_PATH
 
 # Installation
 RUN mkdir -p /opt/s2i/destination && \

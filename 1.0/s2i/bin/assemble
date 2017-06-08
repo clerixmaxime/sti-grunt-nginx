@@ -4,6 +4,7 @@
 LOCAL_SOURCE_DIR=${HOME}
 mkdir -p $LOCAL_SOURCE_DIR
 
+echo "Source dir: " $LOCAL_SOURCE_DIR
 # Copy the source for compilation
 cp -Rf /opt/s2i/destination/src/. $LOCAL_SOURCE_DIR
 cp -Rf /opt/node_modules/. $LOCAL_SOURCE_DIR
