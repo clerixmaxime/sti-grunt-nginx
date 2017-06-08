@@ -2,10 +2,10 @@
 
 # Source code provided to S2I is at ${HOME}
 LOCAL_SOURCE_DIR=${HOME}
-mkdir -p $LOCAL_SOURCE_DIR
+#mkdir -p $LOCAL_SOURCE_DIR
 
 # Copy the source for compilation
-cp -Rf /opt/s2i/destination/src/. $LOCAL_SOURCE_DIR
+#cp -Rf /opt/s2i/destination/src/. $LOCAL_SOURCE_DIR
 chgrp -R 0 $LOCAL_SOURCE_DIR
 chmod -R 777 $LOCAL_SOURCE_DIR
 
@@ -16,7 +16,7 @@ if [ -f "$LOCAL_SOURCE_DIR/Gruntfile.js" ]; then
 
   echo "Found Gruntfile.js... attempting to build with 'grunt build'"
 
-  npm cache clean --force
+  #npm cache clean --force
   npm install
   bower --allow-root install
   grunt build --force -d
@@ -28,7 +28,7 @@ if [ -f "$LOCAL_SOURCE_DIR/Gruntfile.js" ]; then
   fi
 
   echo "Copying build artifacts to nginx documents directory..."
-  mv dist/. /usr/share/nginx/html/
+  cp -a dist/. /usr/share/nginx/html/
   cp nginx/nginx.conf /etc/nginx/nginx.conf
   rm -rf /opt/app-root/src/* /opt/s2i/*
 
