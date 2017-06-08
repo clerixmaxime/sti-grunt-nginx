@@ -11,23 +11,3 @@ Versions
 
 CentOS versions currently provided are:
 * CentOS7
-
-OpenShift 3 Usage
----------------------
-
-First ensure you have a [working OpenShift 3
-environment](http://www.openshift.org/) with the `oc` command in your
-path.
-
-```
-$ oc new-build https://github.com/clerixmaxime/sti-grunt-nginx.git --context-dir=/1.0 --strategy=docker --to=sti-grunt-nginx -n openshift
-```
-
-Wait for that buld to complete. Monitor it
-with `oc status`.
-
-Changes
-----------------
-
-* Update to Node.js 6.x
-* Run as root to avoid change ownership and permissions failures

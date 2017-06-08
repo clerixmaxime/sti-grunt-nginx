@@ -1,7 +1,7 @@
 FROM openshift/base-centos7
 
 LABEL io.k8s.description="Platform for building and running Grunt frontends on nginx" \
-      io.k8s.display-name="nginx" \
+      io.k8s.display-name="S2I Grunt - Nginx" \
       io.openshift.expose-services="80:http" \
       io.openshift.tags="builder,nginx" \
       io.openshift.s2i.destination="/opt/s2i/destination"
@@ -34,8 +34,6 @@ RUN ln -sf /proc/self/fd/1 /var/log/nginx/access.log && \
     chmod -R 777 /var/run && \
     # Take ownership of the nginx documents directory
     chown -R 1001:0 /usr/share/nginx/html && \
-    mkdir -p /var/www/frontend && \
-    chmod -R 777 /var/www/frontend
 
 # Copy the S2I scripts from the specific language image to /usr/local/sti
 COPY ./s2i/bin/ $STI_SCRIPTS_PATH
