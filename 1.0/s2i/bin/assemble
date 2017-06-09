@@ -30,7 +30,6 @@ if [ -f "$LOCAL_SOURCE_DIR/Gruntfile.js" ]; then
   echo "Copying build artifacts to nginx documents directory..."
   mv dist/* /usr/share/nginx/html/
   cp nginx/nginx.conf /etc/nginx/nginx.conf
-  rm -rf /opt/app-root/src/* /opt/s2i/*
 
   popd &> /dev/null
 
